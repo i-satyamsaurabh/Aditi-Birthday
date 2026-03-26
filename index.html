@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday 🎂</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #1a0a0f;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lora', serif;
+      overflow-x: hidden;
+    }
+
+    /* floating petals */
+    .petal {
+      position: fixed;
+      width: 10px; height: 14px;
+      border-radius: 50% 0 50% 0;
+      opacity: 0;
+      animation: fall linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes fall {
+      0%   { transform: translateY(-40px) rotate(0deg); opacity: 0.7; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* sparkles */
+    .sparkle {
+      position: fixed;
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: #ffd6e7;
+      opacity: 0;
+      animation: twinkle ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0; transform: scale(0.5); }
+      50%       { opacity: 1; transform: scale(1.4); }
+    }
+
+    /* card wrapper */
+    .card {
+      position: relative;
+      z-index: 10;
+      background: linear-gradient(160deg, #2d0a18 0%, #1e0812 40%, #2a0d14 100%);
+      border: 1px solid rgba(255,160,180,0.18);
+      border-radius: 28px;
+      max-width: 560px;
+      width: 92%;
+      margin: 40px auto;
+      overflow: hidden;
+      box-shadow:
+        0 0 60px rgba(220, 60, 100, 0.18),
+        0 30px 80px rgba(0,0,0,0.7),
+        inset 0 1px 0 rgba(255,200,210,0.12);
+      animation: cardIn 1s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(40px) scale(0.96); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* top banner */
+    .banner {
+      position: relative;
+      background: linear-gradient(135deg, #8b1a3a 0%, #c0395a 50%, #8b1a3a 100%);
+      padding: 44px 36px 36px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(255,150,180,0.25) 0%, transparent 70%);
+    }
+    .banner-roses {
+      font-size: 36px;
+      letter-spacing: 8px;
+      margin-bottom: 14px;
+      animation: float 3s ease-in-out infinite;
+      display: block;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-6px); }
+    }
+    .banner h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: #fff5f7;
+      line-height: 1.15;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 20px rgba(255,100,140,0.5);
+      position: relative;
+    }
+    .banner h1 em {
+      font-style: italic;
+      color: #ffc5d4;
+    }
+    .banner-sub {
+      font-family: 'Lora', serif;
+      font-size: 13px;
+      color: rgba(255,210,220,0.7);
+      margin-top: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    /* divider */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 36px;
+      margin: 28px 0 0;
+    }
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(220,100,140,0.4), transparent);
+    }
+    .divider-icon { font-size: 18px; }
+
+    /* body */
+    .body {
+      padding: 10px 36px 36px;
+    }
+    .greeting {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 20px;
+      color: #f4a0b8;
+      margin-bottom: 22px;
+      animation: fadeUp 0.8s 0.4s both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    p {
+      font-size: 15.5px;
+      line-height: 1.85;
+      color: #e8c8d0;
+      margin-bottom: 18px;
+      animation: fadeUp 0.8s 0.6s both;
+    }
+    p.delay2 { animation-delay: 0.75s; }
+    p.delay3 { animation-delay: 0.9s; }
+    p.delay4 { animation-delay: 1.05s; }
+
+    .highlight-box {
+      background: rgba(180, 50, 80, 0.15);
+      border-left: 3px solid #d4526e;
+      border-radius: 0 12px 12px 0;
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 17px;
+      color: #f8c8d4;
+      line-height: 1.7;
+      animation: fadeUp 0.8s 1s both;
+    }
+
+    .sign-off {
+      margin-top: 30px;
+      animation: fadeUp 0.8s 1.2s both;
+    }
+    .sign-off p {
+      margin-bottom: 6px;
+      font-size: 15px;
+      color: #e0b0be;
+    }
+    .sign-name {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 26px;
+      color: #f4a0b8;
+      margin-top: 8px;
+      display: block;
+    }
+
+    /* footer */
+    .footer {
+      border-top: 1px solid rgba(180,60,90,0.2);
+      padding: 20px 36px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      font-size: 20px;
+      animation: fadeUp 0.8s 1.4s both;
+    }
+    .footer span {
+      animation: float 2.5s ease-in-out infinite;
+    }
+    .footer span:nth-child(2) { animation-delay: 0.3s; }
+    .footer span:nth-child(3) { animation-delay: 0.6s; }
+    .footer span:nth-child(4) { animation-delay: 0.9s; }
+    .footer span:nth-child(5) { animation-delay: 1.2s; }
+  </style>
+</head>
+<body>
+
+<!-- falling petals -->
+<script>
+  const colors = ['#e8607a','#c94060','#f4a0b8','#d46070','#ff8fa8'];
+  for(let i = 0; i < 22; i++){
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.style.cssText = `
+      left:${Math.random()*100}vw;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      animation-duration:${5+Math.random()*7}s;
+      animation-delay:${Math.random()*8}s;
+      width:${8+Math.random()*8}px;
+      height:${10+Math.random()*10}px;
+    `;
+    document.body.appendChild(p);
+  }
+  for(let i = 0; i < 30; i++){
+    const s = document.createElement('div');
+    s.className = 'sparkle';
+    s.style.cssText = `
+      left:${Math.random()*100}vw;
+      top:${Math.random()*100}vh;
+      animation-duration:${2+Math.random()*3}s;
+      animation-delay:${Math.random()*4}s;
+    `;
+    document.body.appendChild(s);
+  }
+</script>
+
+<div class="card">
+
+  <div class="banner">
+    <span class="banner-roses">🌹 🌸 🌹</span>
+    <h1>Happy Birthday,<br><em>My Love</em> 🎂</h1>
+    <p class="banner-sub">wishing you the most beautiful day</p>
+  </div>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-icon">💌</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="body">
+
+    <div class="greeting">Hey beby,</div>
+
+    <p>
+      First thing first. I am really really sorry. I know I missed wishing you at 12 o'clock. I know how much that moment means to you. And I am feeling very bad about it. I have no excuse for that at all.
+    </p>
+
+    <p class="delay2">
+      But today is your birthday yaar. And I just want to tell you one thing from my heart. You are such a special person. Not just to me but just as a person also. You go to office every single day, you work so hard, you handle everything so nicely, and still you never stop caring for people around you. This is not a small thing beby. This is actually very very rare quality.
+    </p>
+
+    <div class="highlight-box">
+      "I am so glad you are in my life. Seriously. Every boring day becomes little bit better only because of you."
+    </div>
+
+    <p class="delay3">
+      I know today things got a little bad between us. But I also know one thing very clearly. You and me, we are okay. We always sort it out together. That is the best thing about us only.
+    </p>
+
+    <p class="delay4">
+      So on your birthday I just want you to feel very loved today. Not because I am just saying it. But because you truly truly deserve it. Go eat something nice today. Enjoy your day at office. And tonight we will talk properly okay? Promise.
+    </p>
+
+    <div class="sign-off">
+      <p>With all my love and all my sorry,</p>
+      <span class="sign-name">Yours only 🥺❤️</span>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span>🌹</span>
+    <span>🎂</span>
+    <span>💖</span>
+    <span>🎉</span>
+    <span>🌸</span>
+  </div>
+
+</div>
+
+</body>
+</html>
